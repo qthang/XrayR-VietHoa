@@ -1,88 +1,71 @@
-# XrayR
+# XRayR version 0.8.0 - Việt Hoá Full
+Một khung phụ trợ Xray có thể dễ dàng hỗ trợ nhiều bảng.
 
-A Xray backend framework that can easily support many panels.
+Một khung công tác back-end dựa trên Xray, hỗ trợ các giao thức V2ay, Trojan, Shadowsocks, cực kỳ dễ dàng mở rộng và hỗ trợ kết nối nhiều bảng điều khiển
 
-一个基于Xray的后端框架，支持V2ay,Trojan,Shadowsocks协议，极易扩展，支持多面板对接。
+Tìm mã nguồn tại: [Misaka-blog/XrayR](https://github.com/Misaka-blog/XrayR)
 
-如果您喜欢本项目，可以右上角点个star+watch，持续关注本项目的进展。
+# Hướng dẫn chi tiết
 
-使用教程：[详细使用教程](https://aiastia.gitbook.io/xrayr/)
-## 免责声明
+[Hướng dẫn chi tiết](https://crackair.gitbook.io/xrayr-project/)
 
-本项目只是本人个人学习开发并维护，本人不保证任何可用性，也不对使用本软件造成的任何后果负责。
+# Mở port cho VPS
+Để đảm bảo cho việc cài nút V2board, bạn cần mở các cổng của nó tránh trường hợp lỗi không thể kết nối tới internet.
 
-## 特点
-
-* 永久开源且免费。
-* 支持V2ray，Trojan， Shadowsocks多种协议。
-* 支持Vless和XTLS等新特性。
-* 支持单实例对接多面板、多节点，无需重复启动。
-* 支持限制在线IP
-* 支持节点端口级别、用户级别限速。
-* 配置简单明了。
-* 修改配置自动重启实例。
-* 方便编译和升级，可以快速更新核心版本， 支持Xray-core新特性。
-
-## 功能介绍
-
-| 功能            | v2ray | trojan | shadowsocks |
-| --------------- | ----- | ------ | ----------- |
-| 获取节点信息    | √     | √      | √           |
-| 获取用户信息    | √     | √      | √           |
-| 用户流量统计    | √     | √      | √           |
-| 服务器信息上报  | √     | √      | √           |
-| 自动申请tls证书 | √     | √      | √           |
-| 自动续签tls证书 | √     | √      | √           |
-| 在线人数统计    | √     | √      | √           |
-| 在线用户限制    | √     | √      | √           |
-| 审计规则        | √     | √      | √           |
-| 节点端口限速    | √     | √      | √           |
-| 按照用户限速    | √     | √      | √           |
-| 自定义DNS       | √     | √      | √           |
-## 支持前端
-
-| 前端                                                   | v2ray | trojan | shadowsocks                    |
-| ------------------------------------------------------ | ----- | ------ | ------------------------------ |
-| sspanel-uim                                            | √     | √      | √ (单端口多用户和V2ray-Plugin) |
-| v2board                                                | √     | √      | √                              |
-| [PMPanel](https://github.com/ByteInternetHK/PMPanel)   | √     | √      | √                              |
-| [ProxyPanel](https://github.com/ProxyPanel/ProxyPanel) | √     | √      | √                              |
-
-## 软件安装
-
-### 一键安装
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 80
+sudo ufw allow 443
 ```
 
-### 使用Docker部署软件
-[Docker部署教程](https://crackair.gitbook.io/xrayr-project/xrayr-xia-zai-he-an-zhuang/install/docker)
+# Cài đặt XrayR
+Tiếp tục chúng ta nhập lệnh sau để bắt đầu cài đặt XrayR về VPS của bạn
 
-### 手动安装
-[手动安装教程](https://crackair.gitbook.io/xrayr-project/xrayr-xia-zai-he-an-zhuang/install/manual)
+```
+bash <(curl -Ls https://raw.githubusercontents.com/qthang/XrayR-Viet-release/master/install.sh)
+```
+# Cấu hình XrayR
+Sau khi cài đặt xong, chúng ta tiếp tục nhập lệnh sau để vào cấu hình XrayR. Sử dụng `nano` hoặc `vi` để vào thư mục cấu hình
 
-## 配置文件及详细使用教程
+```
+nano /etc/XrayR/config.yml
+```
+```
+vi /etc/XrayR/config.yml
+```
+Hoặc gọi `xrayr` rồi bấm phím `0`
 
-[详细使用教程](https://crackair.gitbook.io/xrayr-project/)
+Chúng ta cần chú ý các lệnh sau đây:
+```
+1: dòng PanelType : Tên kiểu web (ví dụ V2board, SSpanel,... chữ đầu viết hoa)
+2: dòng ApiHost : Địa chỉ web muốn liên kết (ví dụ https://4gfree.qthang.net)
+3: dòng ApiKey : key của web (lấy trên web admin / cấu hình hệ thống / máy chủ chìa khóa giao tiếp)
+4: dòng NodeID : ID server (lấy trên web admin / Quản lý nút / tên ID nút)
+5: dòng certdomain : IP của server muốn đưa lên web
+```
+Với `nano`: Sau khi cài đặt xong, chúng ta sẽ ấn `CTRL + S` để lưu lại, sau đó ấn `CTRL + X` để thoát ra.
 
-## Thanks
 
-* [Project X](https://github.com/XTLS/)
-* [V2Fly](https://github.com/v2fly)
-* [VNet-V2ray](https://github.com/ProxyPanel/VNet-V2ray)
-* [Air-Universe](https://github.com/crossfw/Air-Universe)
+Thêm dòng `DisableSniffing: true` giữa 2 dòng `ControllerConfig:` và `ListenIP: 0.0.0.0` để fix lỗi zalo
+```
+  RuleListPath:           # /etc/XrayR/rulelist Đường dẫn đến tệp danh sách quy tắc cục bộ
+ControllerConfig:
+  DisableSniffing: true   # Tắt sniffing để fix lỗi zalo 
+  ListenIP: 0.0.0.0       # Địa chỉ IP bạn muốn nghe
+  SendIP: 0.0.0.0         # Địa chỉ IP bạn muốn gửi gói
+```
+Nếu bị lỗi xrayr không chạy thì bỏ dòng `DisableSniffing: true` đi nhé.
 
-## Licence
+# Bắt đầu chạy XrayR
+Để bắt đầu .chạy XrayR chúng ta sẽ nhập mã code này trong VPS tạo nút
+```
+xrayr start
+```
 
-[Mozilla Public License Version 2.0](https://github.com/XrayR-project/XrayR/blob/master/LICENSE)
+# Nên sử dụng VPS sạch để cài đặt tránh lỗi vặt
+# My Telegram
+[t.me/qthang_4gfree](https://t.me/qthang_4gfree)
 
-## Telgram
-
-[XrayR后端讨论](https://t.me/XrayR_project)
-
-[XrayR通知](https://t.me/XrayR_channel)
-
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/XrayR-project/XrayR.svg)](https://starchart.cc/XrayR-project/XrayR)
-
+# Thanks
+Misaka, DauDau, SkyHT,...
