@@ -23,7 +23,7 @@ sudo ufw allow 443
 Tiếp tục chúng ta nhập lệnh sau để bắt đầu cài đặt XrayR về VPS của bạn
 
 ```
-bash <(curl -Ls https://raw.githubusercontents.com/qthang/XrayR-VietHoa/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontents.com/qthang/XrayR-script/master/install.sh)
 ```
 # Cấu hình XrayR
 Sau khi cài đặt xong, chúng ta tiếp tục nhập lệnh sau để vào cấu hình XrayR. Sử dụng `nano` hoặc `vi` để vào thư mục cấu hình
