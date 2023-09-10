@@ -10,6 +10,11 @@ import (
 	"github.com/juju/ratelimit"
 )
 
+var (
+    OnlineUsers []api.OnlineUser
+    mu          sync.Mutex
+)
+
 type UserInfo struct {
 	UID         int
 	SpeedLimit  uint64
@@ -98,6 +103,10 @@ func (l *Limiter) GetOnlineDevice(tag string) (*[]api.OnlineUser, error) {
 				onlineUser = append(onlineUser, api.OnlineUser{UID: uid, IP: ip})
 				return true
 			})
+			// Move onlineUser vào OnlineUsers
+		        mu.Lock() // Khóa mutex trước khi chỉnh sửa dữ liệu
+		        OnlineUsers = append(OnlineUsers, onlineUser) // Sử dụng "..." để nối slice
+		        mu.Unlock() // Mở khóa mutex sau khi chỉnh sửa xong
 			email := key.(string)
 			inboundInfo.UserOnlineIP.Delete(email) // Reset online device
 			return true
