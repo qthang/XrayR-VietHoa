@@ -446,6 +446,9 @@ func (c *Controller) userInfoMonitor() (err error) {
 			log.Print(err)
 		} else {
 			log.Printf("[%s: %d] Report %d online users", c.nodeInfo.NodeType, c.nodeInfo.NodeID, len(*onlineDevice))
+			// In thông tin từ slice onlineUser
+			for _, user := range *onlineDevice {
+			log.Printf("User UID: %d, IP: %s", user.UID, user.IP)
 		}
 	}
 	// Report Illegal user
